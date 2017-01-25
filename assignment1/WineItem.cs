@@ -1,4 +1,7 @@
-﻿using System;
+﻿//David Gipe
+//CIS 237
+//1-18-17
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,11 +42,14 @@ namespace assignment1
         //******************************
         //Public Methods
         //******************************
+        
+        //Adds number and name to string
         public string NumberAndName()
         {
             return itemnumber + " " + winename;
         }
 
+        //adds all values to string
         public override string ToString()
         {
             return itemnumber + " " + winename + " " + volume;
@@ -58,11 +64,5 @@ namespace assignment1
             this.winename = WineName;
             this.volume = Volume;
         }
-
-        public WineItem()
-        {
-            //Do Nothing
-        }
-
     }
 }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿//David Gipe
+//CIS 237
+//1-18-17
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +18,7 @@ namespace assignment1
         public int GetLoadInput()
         {
             //Request load
-            this.LoadMenu();  //calling a method
+            this.LoadMenu();
 
             //Get the input from the user
             String input = Console.ReadLine();
@@ -40,9 +43,8 @@ namespace assignment1
 
         public int GetInput()
         {
-            //Request load
-            
-            this.MainMenu();  //calling a method
+            //Main menu update            
+            this.MainMenu();  
 
             //Get the input from the user
             String input = Console.ReadLine();
@@ -57,26 +59,27 @@ namespace assignment1
                 //re-spring the menu
                 this.MainMenu();
 
-                //et the input from the console again
+                //Get the input from the console again
                 input = Console.ReadLine();
 
             }
-            //At this pint, I kow the input is a valid number of either
-            //a 1 or a 2.
 
             return Int32.Parse(input);
         }
 
+        //Search option
         public string Search()
         {
+            //display menu
             this.SearchMenu();
-
+            //Pull user selection
             string input = Console.ReadLine();
-
+            
             return input;
 
         }
 
+        //Add option (I realize this shouldnt all  be in  the UI but I had issues getting 3 strings moved around to a diffrent class)
         public string AddItem()
         {
             Console.WriteLine("Item number?");
@@ -91,14 +94,18 @@ namespace assignment1
 
             string input3 = Console.ReadLine();
 
+            //Add to CSV
             List<string> newLines = new List<string>();
             newLines.Add(input1 + "," + input2 + "," + input3);
             File.AppendAllLines("../../../datafiles/WineList.csv", newLines);
 
+            Console.WriteLine("");
+            Console.WriteLine("Complete!");
+
             return null;             
         }
                 
-
+        //Output, used for print
         public void Output(string outputString)
         {
             Console.WriteLine(outputString);
@@ -115,8 +122,6 @@ namespace assignment1
         private void MainMenu()
         {
             Console.WriteLine("");
-            Console.WriteLine("Complete!");
-            Console.WriteLine("");
             Console.WriteLine("Please make a selection:");
             Console.WriteLine("1. Print");
             Console.WriteLine("2. Search");
@@ -128,7 +133,7 @@ namespace assignment1
 
         private void PrintErrorMessage()
         {
-            Console.WriteLine("That is not a valid entry Dave");
+            Console.WriteLine("That is not a valid entry");
             Console.WriteLine("Please make a valid choice");
             Console.WriteLine();
         }

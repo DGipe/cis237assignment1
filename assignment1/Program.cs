@@ -1,4 +1,7 @@
-﻿using System;
+﻿//David Gipe
+//CIS 237
+//1-18-17
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,26 +19,28 @@ namespace assignment1
             UserInterface ui = new UserInterface();
             CSVProcessor csv = new CSVProcessor();
             WineItemCollection wic = new WineItemCollection();
-            WineItem wines = new WineItem();
-
+          
+            //Make the string for the path to the csv file
+            string pathToCsv = "../../../datafiles/WineList.csv";
 
             //intial Wine Item array
             WineItem[] wineitems = new WineItem[4000];
 
-            //Recieve user input
+            //Recieve user input in regards to load file
             int choice = ui.GetLoadInput();
                         
            //See if the input they sent is equal to 1.
            if (choice == 1)
            {
-                    //Make the string for the path to the csv file
-                    string pathToCsv = "../../../datafiles/WineList.csv";
+
 
                     //Instanciate the csvProcessor
                     CSVProcessor csvProcessor = new CSVProcessor();
                     //Call the ImportCSV method sending over the path and
                     //the array to store the read in records to.
                     csvProcessor.ImportCsv(pathToCsv, wineitems);
+                    Console.WriteLine("");
+                    Console.WriteLine("Complete!");
             }
            
            else
@@ -49,7 +54,7 @@ namespace assignment1
             //Recieve user input
             int choice1 = ui.GetInput();
 
-            //Keep running menu untill exited
+            //Keep running menu untill user exits
             while (choice1 != 4)
             {
 
@@ -83,15 +88,23 @@ namespace assignment1
                 if (choice1 == 2)
                 {
                     string search = ui.Search();
-                    string csvFile = "../../../datafiles/WineList.csv";
                     string searchString = search;
                     char csvSeparator = ',';
 
-                    foreach (string line in File.ReadLines(csvFile))
-                          foreach (string value in line.Replace("\"", "").Split('\r', '\n', csvSeparator))
-                              if (value.Trim() == searchString.Trim()) // case sensitive
-                                   Console.WriteLine("[ {0} ] found in: {1}", value, line);
+                    foreach (string line in File.ReadLines(pathToCsv))
+                        foreach (string value in line.Replace("\"", "").Split('\r', '\n', csvSeparator))
+                            if (value.Trim() == searchString.Trim())
+                            {
+                                Console.WriteLine("");
+                                Console.WriteLine("Search Sucess!");
+                                Console.WriteLine("");
+                                Console.WriteLine("[ {0} ]  {1}", value, line);
+                                goto MenuReturn;
+                            }
 
+                    Console.WriteLine("");
+                    Console.WriteLine("No Results Found!");
+                    Console.WriteLine("");
                     goto MenuReturn;
                  }
 
@@ -101,6 +114,8 @@ namespace assignment1
                 if (choice1 == 3)
                 {
                     ui.AddItem();
+
+
 
                     goto MenuReturn;
                 }

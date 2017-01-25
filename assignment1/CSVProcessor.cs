@@ -1,4 +1,7 @@
-﻿using System;
+﻿//David Gipe
+//CIS 237
+//1-18-17
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,11 +30,11 @@ namespace assignment1
                 //While we are still reading a line from the file
                 while ((line = streamReader.ReadLine()) != null)
                 {
-                    //Process the line\
+                    //Process the line
                     processLine(line, wineitems, counter++);
                 }
 
-                //Read through the whole filie, so we can return true.
+                //Read through the whole file, so we can return true.
                 return true;
 
             }
@@ -68,7 +71,7 @@ namespace assignment1
             string winename = parts[1];
             string volume = parts[2];
 
-            //Add a new employee into the array that was passed in.
+            //Add a new wine into the array that was passed in.
             wineitems[index] = new WineItem(itemnumber, winename, volume);
 
         }
