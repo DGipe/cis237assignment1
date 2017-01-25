@@ -39,7 +39,7 @@ namespace assignment1
         //******************************
         //Public Methods
         //******************************
-        public string FirstAndLastName()
+        public string NumberAndName()
         {
             return itemnumber + " " + winename;
         }

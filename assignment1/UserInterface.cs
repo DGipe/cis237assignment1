@@ -3,16 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace assignment1
 {
     class UserInterface
     {
-        private string item1;
-        private string item2;
-        private string item3;
-
-
         //*****************************
         //Methods
         //*****************************
@@ -81,7 +77,7 @@ namespace assignment1
 
         }
 
-        public void AddItem()
+        public string AddItem()
         {
             Console.WriteLine("Item number?");
 
@@ -95,10 +91,13 @@ namespace assignment1
 
             string input3 = Console.ReadLine();
 
-             
-        }
+            List<string> newLines = new List<string>();
+            newLines.Add(input1 + "," + input2 + "," + input3);
+            File.AppendAllLines("../../../datafiles/WineList.csv", newLines);
 
-        
+            return null;             
+        }
+                
 
         public void Output(string outputString)
         {

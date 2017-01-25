@@ -24,16 +24,12 @@ namespace assignment1
 
             //Recieve user input
             int choice = ui.GetLoadInput();
-
-
-            //While the chouse they slected is not 2, continue to do work
-          //  while (choice != 2)
-
+                        
            //See if the input they sent is equal to 1.
            if (choice == 1)
            {
                     //Make the string for the path to the csv file
-                    string pathToCsv = "WineList.csv";
+                    string pathToCsv = "../../../datafiles/WineList.csv";
 
                     //Instanciate the csvProcessor
                     CSVProcessor csvProcessor = new CSVProcessor();
@@ -56,7 +52,10 @@ namespace assignment1
             //Keep running menu untill exited
             while (choice1 != 4)
             {
+
+                //******************************************
                 //Print option
+                //******************************************
                 if (choice1 == 1)
                 {
                     //Create a string that can be concated to
@@ -78,51 +77,36 @@ namespace assignment1
                     goto MenuReturn;
 
                 }
+                //****************************************
                 //Search Option
+                //****************************************
                 if (choice1 == 2)
                 {
                     string search = ui.Search();
-                    
-                    // bool value1 = Array.IndexOf(wineitems, search) >= 0;
-                    int value1 = Array.IndexOf(wineitems, search);
+                    string csvFile = "../../../datafiles/WineList.csv";
+                    string searchString = search;
+                    char csvSeparator = ',';
 
-                    Console.WriteLine(value1);
+                    foreach (string line in File.ReadLines(csvFile))
+                          foreach (string value in line.Replace("\"", "").Split('\r', '\n', csvSeparator))
+                              if (value.Trim() == searchString.Trim()) // case sensitive
+                                   Console.WriteLine("[ {0} ] found in: {1}", value, line);
 
-                        goto MenuReturn;
+                    goto MenuReturn;
                  }
 
+                //****************************************
                 //Add Item option 
+                //****************************************
                 if (choice1 == 3)
                 {
-
-                    // string additem = ui.AddItem();
-
-                    Console.WriteLine("Item number?");
-
-                    string input1 = Console.ReadLine();
-
-                    Console.WriteLine("Item name?");
-
-                    string input2 = Console.ReadLine();
-
-                    Console.WriteLine("Item volume?");
-
-                    string input3 = Console.ReadLine();
-
-                    List<string> newLines = new List<string>();
-                    newLines.Add(input1 + ","+ input2 + "," + input3);
-                    File.AppendAllLines("WineList.csv", newLines);
+                    ui.AddItem();
 
                     goto MenuReturn;
                 }
 
                 Environment.Exit(0);
             }
-
-
-            //re-prompt te user for input
-            //                choice = ui.GetPrintInput();
-
 
         }
     }
