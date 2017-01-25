@@ -8,6 +8,11 @@ namespace assignment1
 {
     class UserInterface
     {
+        private string item1;
+        private string item2;
+        private string item3;
+
+
         //*****************************
         //Methods
         //*****************************
@@ -40,6 +45,7 @@ namespace assignment1
         public int GetInput()
         {
             //Request load
+            
             this.MainMenu();  //calling a method
 
             //Get the input from the user
@@ -74,6 +80,25 @@ namespace assignment1
             return input;
 
         }
+
+        public void AddItem()
+        {
+            Console.WriteLine("Item number?");
+
+            string input1 = Console.ReadLine();
+
+            Console.WriteLine("Item name?");
+
+            string input2 = Console.ReadLine();
+
+            Console.WriteLine("Item volume?");
+
+            string input3 = Console.ReadLine();
+
+             
+        }
+
+        
 
         public void Output(string outputString)
         {
@@ -113,6 +138,8 @@ namespace assignment1
         {
             Console.WriteLine("Please enter item number you wish to search for:");
         }
+
+
     }
 
 

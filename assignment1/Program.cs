@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace assignment1
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
             // Create class instances
@@ -15,6 +17,7 @@ namespace assignment1
             CSVProcessor csv = new CSVProcessor();
             WineItemCollection wic = new WineItemCollection();
             WineItem wines = new WineItem();
+
 
             //intial Wine Item array
             WineItem[] wineitems = new WineItem[4000];
@@ -43,15 +46,16 @@ namespace assignment1
             {
                 Environment.Exit(0);
             }
-  
-            
+
+           //Return tag 
+            MenuReturn:
 
             //Recieve user input
             int choice1 = ui.GetInput();
 
             //Keep running menu untill exited
             while (choice1 != 4)
-            {   
+            {
                 //Print option
                 if (choice1 == 1)
                 {
@@ -71,29 +75,45 @@ namespace assignment1
 
                     //Use the UI class to print out the string
                     ui.Output(outputString);
-                    choice1 = ui.GetInput();
-                }
+                    goto MenuReturn;
 
+                }
                 //Search Option
                 if (choice1 == 2)
                 {
                     string search = ui.Search();
-
-
-
+                    
                     // bool value1 = Array.IndexOf(wineitems, search) >= 0;
                     int value1 = Array.IndexOf(wineitems, search);
 
                     Console.WriteLine(value1);
 
-                    choice1 = ui.GetInput();
-                }
+                        goto MenuReturn;
+                 }
 
                 //Add Item option 
                 if (choice1 == 3)
                 {
 
-                    choice1 = ui.GetInput();
+                    // string additem = ui.AddItem();
+
+                    Console.WriteLine("Item number?");
+
+                    string input1 = Console.ReadLine();
+
+                    Console.WriteLine("Item name?");
+
+                    string input2 = Console.ReadLine();
+
+                    Console.WriteLine("Item volume?");
+
+                    string input3 = Console.ReadLine();
+
+                    List<string> newLines = new List<string>();
+                    newLines.Add(input1 + ","+ input2 + "," + input3);
+                    File.AppendAllLines("WineList.csv", newLines);
+
+                    goto MenuReturn;
                 }
 
                 Environment.Exit(0);
