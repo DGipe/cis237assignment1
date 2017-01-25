@@ -9,7 +9,7 @@ namespace assignment1
 {
     class CSVProcessor
     {
-        public bool ImportCsv(string pathToCSVFile, WineItem[] wineitem)
+        public bool ImportCsv(string pathToCSVFile, WineItem[] wineitems)
         {
             //Declare the streamReader
             StreamReader streamReader = null;
@@ -28,7 +28,7 @@ namespace assignment1
                 while ((line = streamReader.ReadLine()) != null)
                 {
                     //Process the line\
-                    processLine(line, wineitem, counter++);
+                    processLine(line, wineitems, counter++);
                 }
 
                 //Read through the whole filie, so we can return true.

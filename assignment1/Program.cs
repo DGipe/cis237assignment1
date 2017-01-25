@@ -19,35 +19,57 @@ namespace assignment1
             //intial Wine Item array
             WineItem[] wineitems = new WineItem[4000];
 
-
-            //Make the string for the path to the csv file
-            string pathToCsv = "../../../datafiels/WineList.csv";
-
-            //Instanciate the csvProcessor
-            CSVProcessor csvProcessor = new CSVProcessor();
-            //Call the ImportCSV method sending over the path and
-            //the array to store the read in records to.
-            csvProcessor.ImportCsv(pathToCsv, wineitems);
-
             //Recieve user input
-            int choice = ui.GetUserInput();
+            int choice = ui.GetLoadInput();
+
 
             //While the chouse they slected is not 2, continue to do work
-            while (choice != 2)
+          //  while (choice != 2)
+
+           //See if the input they sent is equal to 1.
+           if (choice == 1)
+           {
+                    //Make the string for the path to the csv file
+                    string pathToCsv = "WineList.csv";
+
+                    //Instanciate the csvProcessor
+                    CSVProcessor csvProcessor = new CSVProcessor();
+                    //Call the ImportCSV method sending over the path and
+                    //the array to store the read in records to.
+                    csvProcessor.ImportCsv(pathToCsv, wineitems);
+                //re-prompt te user for input
+               // choice = ui.GetPrintInput();
+            }
+           
+           else
+            {
+                Environment.Exit(0);
+            }
+  
+            
+
+
+            
+
+            //Recieve user input
+            int choice1 = ui.GetPrintInput();
+
+            //While the chouse they slected is not 2, continue to do work
+            while (choice1 != 2)
             {
                 //See if the input they sent is equal to 1.
-                if (choice == 1)
+                if (choice1 == 1)
                 {
                     //Create a string that can be concated to
                     string outputString = "";
 
                     //Print out the employees in the array
-                    foreach (WineItem employee in wineitems)
+                    foreach (WineItem wineitem in wineitems)
                     {
-                        if (employee != null)
+                        if (wineitem != null)
                         {
                             //Concat to the outputString
-                            outputString += employee.ToString() +
+                            outputString += wineitem.ToString() +
                                 Environment.NewLine;
                         }
                     }
@@ -57,7 +79,7 @@ namespace assignment1
                 }
 
                 //re-prompt te user for input
-                choice = ui.GetUserInput();
+                choice = ui.GetPrintInput();
             }
 
         }
