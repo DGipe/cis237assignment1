@@ -3,50 +3,74 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace assignment1
 {
     class CSVProcessor
     {
-        public void LoadWine()
+        public bool ImportCsv(string pathToCSVFile, WineItem[] wineitem)
         {
+            //Declare the streamReader
+            StreamReader streamReader = null;
 
-
-
-        // Load a CSV file into an array of rows and columns.
-        // Assume there may be blank lines but every line has
-        // the same number of fields.
-        string[,] LoadCsv(string WineList.csv)
-        {
-            // Get the file's text.
-            string whole_file = System.IO.File.ReadAllText(WineList.csv);
-
-            // Split into lines.
-            whole_file = whole_file.Replace('\n', '\r');
-            string[] lines = whole_file.Split(new char[] { '\r' },
-                StringSplitOptions.RemoveEmptyEntries);
-
-            // See how many rows and columns there are.
-            int num_rows = lines.Length;
-            int num_cols = lines[0].Split(',').Length;
-
-            // Allocate the data array.
-            string[,] values = new string[num_rows, num_cols];
-
-            // Load the array.
-            for (int r = 0; r < num_rows; r++)
+            try
             {
-                string[] line_r = lines[r].Split(',');
-                for (int c = 0; c < num_cols; c++)
+                //declare a string for the line
+                string line;
+
+                //Intanciate the stream reader
+                streamReader = new StreamReader(pathToCSVFile);
+
+                int counter = 0;
+
+                //While we are still reading a line from the file
+                while ((line = streamReader.ReadLine()) != null)
                 {
-                    values[r, c] = line_r[c];
+                    //Process the line\
+                    processLine(line, wineitem, counter++);
                 }
+
+                //Read through the whole filie, so we can return true.
+                return true;
+
             }
 
-            // Return the values.
-            return values;
-        }
-    }
+            catch (Exception e)
+            {
+                //OUtput the exception and the stacktrace for the exception 
+                Console.WriteLine(e.ToString());
+                Console.WriteLine();
+                Console.WriteLine(e.StackTrace);
 
+                //return falce because it no working
+                return false;
+            }
+            finally
+            {
+                //If the stream reader was instanciated, make sure it is closed
+                //before esxiting te reader
+                if (streamReader != null)
+                {
+                    streamReader.Close();
+                }
+            }
+        }
+
+        private void processLine(string line, WineItem[] employees, int index)
+        {
+            //declare array pf parts that will contain the results of splitting
+            //the read in string 
+            string[] parts = line.Split(',');
+
+            //Assign each part to a variable
+            string firstName = parts[0];
+            string lastName = parts[1];
+            decimal salary = decimal.Parse(parts[2]);
+
+            //Add a new employee into the array that was passed in.
+            employees[index] = new Employee(firstName, lastName, salary);
+
+        }
     }
 }
