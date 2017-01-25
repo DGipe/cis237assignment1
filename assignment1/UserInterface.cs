@@ -65,6 +65,16 @@ namespace assignment1
             return Int32.Parse(input);
         }
 
+        public string Search()
+        {
+            this.SearchMenu();
+
+            string input = Console.ReadLine();
+
+            return input;
+
+        }
+
         public void Output(string outputString)
         {
             Console.WriteLine(outputString);
@@ -97,6 +107,11 @@ namespace assignment1
             Console.WriteLine("That is not a valid entry Dave");
             Console.WriteLine("Please make a valid choice");
             Console.WriteLine();
+        }
+
+        private void SearchMenu()
+        {
+            Console.WriteLine("Please enter item number you wish to search for:");
         }
     }
 

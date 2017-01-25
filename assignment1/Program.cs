@@ -77,6 +77,14 @@ namespace assignment1
                 //Search Option
                 if (choice1 == 2)
                 {
+                    string search = ui.Search();
+
+
+
+                    // bool value1 = Array.IndexOf(wineitems, search) >= 0;
+                    int value1 = Array.IndexOf(wineitems, search);
+
+                    Console.WriteLine(value1);
 
                     choice1 = ui.GetInput();
                 }
