@@ -19,7 +19,14 @@ namespace assignment1
             UserInterface ui = new UserInterface();
             CSVProcessor csv = new CSVProcessor();
             WineItemCollection wic = new WineItemCollection();
-          
+
+            //Header (cause console programs are boring)
+            ui.Output("************************************************************" + Environment.NewLine +
+            "*********                   CIS237                 *********" + Environment.NewLine +
+            "********                 Assignment #1              ********" + Environment.NewLine +
+            "*******             Wine Inventory Managment         *******" + Environment.NewLine +
+            "************************************************************" + Environment.NewLine);
+
             //Make the string for the path to the csv file
             string pathToCsv = "../../../datafiles/WineList.csv";
 
