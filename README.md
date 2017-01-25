@@ -1,9 +1,9 @@
-# Assignment 1 - Review of C# Basic Concepts and Introduction to Git
+﻿# Assignment 1 - Review of C# Basic Concepts and Introduction to Git
 
 ## Due 01-25-2017
 
 ## Author
-
+David
 
 
 ## Description
@@ -85,4 +85,8 @@ Suggestion/Hints:
 
 ## Outside Resources Used
 
+https://www.dotnetperls.com/array-find
+
+
 ## Known Problems, Issues, And/Or Errors in the Program
+None
