@@ -57,19 +57,19 @@ namespace assignment1
             }
         }
 
-        private void processLine(string line, WineItem[] employees, int index)
+        private void processLine(string line, WineItem[] wineitems, int index)
         {
             //declare array pf parts that will contain the results of splitting
             //the read in string 
             string[] parts = line.Split(',');
 
             //Assign each part to a variable
-            string firstName = parts[0];
-            string lastName = parts[1];
-            decimal salary = decimal.Parse(parts[2]);
+            string itemnumber = parts[0];
+            string winename = parts[1];
+            string volume = parts[2];
 
             //Add a new employee into the array that was passed in.
-            employees[index] = new Employee(firstName, lastName, salary);
+            wineitems[index] = new WineItem(itemnumber, winename, volume);
 
         }
     }

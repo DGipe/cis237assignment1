@@ -16,6 +16,19 @@ namespace assignment1
             WineItemCollection wic = new WineItemCollection();
             WineItem wines = new WineItem();
 
+            //intial Wine Item array
+            WineItem[] wineitems = new WineItem[4000];
+
+
+            //Make the string for the path to the csv file
+            string pathToCsv = "../../../datafiels/WineList.csv";
+
+            //Instanciate the csvProcessor
+            CSVProcessor csvProcessor = new CSVProcessor();
+            //Call the ImportCSV method sending over the path and
+            //the array to store the read in records to.
+            csvProcessor.ImportCsv(pathToCsv, wineitems);
+
             //Recieve user input
             int choice = ui.GetUserInput();
 
@@ -25,12 +38,22 @@ namespace assignment1
                 //See if the input they sent is equal to 1.
                 if (choice == 1)
                 {
-                    //Load CSV file
-                    csv.LoadWine();
+                    //Create a string that can be concated to
+                    string outputString = "";
 
+                    //Print out the employees in the array
+                    foreach (WineItem employee in wineitems)
+                    {
+                        if (employee != null)
+                        {
+                            //Concat to the outputString
+                            outputString += employee.ToString() +
+                                Environment.NewLine;
+                        }
+                    }
 
-
-
+                    //Use the UI class to print out the string
+                    ui.Output(outputString);
                 }
 
                 //re-prompt te user for input
