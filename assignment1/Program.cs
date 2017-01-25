@@ -37,8 +37,6 @@ namespace assignment1
                     //Call the ImportCSV method sending over the path and
                     //the array to store the read in records to.
                     csvProcessor.ImportCsv(pathToCsv, wineitems);
-                //re-prompt te user for input
-               // choice = ui.GetPrintInput();
             }
            
            else
@@ -48,16 +46,13 @@ namespace assignment1
   
             
 
-
-            
-
             //Recieve user input
-            int choice1 = ui.GetPrintInput();
+            int choice1 = ui.GetInput();
 
-            //While the chouse they slected is not 2, continue to do work
-            while (choice1 != 2)
-            {
-                //See if the input they sent is equal to 1.
+            //Keep running menu untill exited
+            while (choice1 != 4)
+            {   
+                //Print option
                 if (choice1 == 1)
                 {
                     //Create a string that can be concated to
@@ -76,11 +71,30 @@ namespace assignment1
 
                     //Use the UI class to print out the string
                     ui.Output(outputString);
+                    choice1 = ui.GetInput();
                 }
 
-                //re-prompt te user for input
-                choice = ui.GetPrintInput();
+                //Search Option
+                if (choice1 == 2)
+                {
+
+                    choice1 = ui.GetInput();
+                }
+
+                //Add Item option 
+                if (choice1 == 3)
+                {
+
+                    choice1 = ui.GetInput();
+                }
+
+                Environment.Exit(0);
             }
+
+
+            //re-prompt te user for input
+            //                choice = ui.GetPrintInput();
+
 
         }
     }

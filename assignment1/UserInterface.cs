@@ -37,23 +37,23 @@ namespace assignment1
 
 
 
-        public int GetPrintInput()
+        public int GetInput()
         {
             //Request load
-            this.PrintMenu();  //calling a method
+            this.MainMenu();  //calling a method
 
             //Get the input from the user
             String input = Console.ReadLine();
 
             //While te imput is not valid re-get the input
-            while (input != "1" && input != "2")
+            while (input != "1" && input != "2" && input != "3" && input != "4")
             {
 
                 //Print Error message
                 this.PrintErrorMessage();
 
                 //re-spring the menu
-                this.PrintMenu();
+                this.MainMenu();
 
                 //et the input from the console again
                 input = Console.ReadLine();
@@ -78,11 +78,18 @@ namespace assignment1
             Console.WriteLine("2. No, Exit");
         }
 
-        private void PrintMenu()
+        private void MainMenu()
         {
-            Console.WriteLine("Print Wine list?");
-            Console.WriteLine("1. Yes");
-            Console.WriteLine("2. No, Exit");
+            Console.WriteLine("");
+            Console.WriteLine("Complete!");
+            Console.WriteLine("");
+            Console.WriteLine("Please make a selection:");
+            Console.WriteLine("1. Print");
+            Console.WriteLine("2. Search");
+            Console.WriteLine("3. Add Item");
+            Console.WriteLine("4. Exit");
+
+
         }
 
         private void PrintErrorMessage()
